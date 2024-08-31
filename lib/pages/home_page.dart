@@ -1,4 +1,5 @@
-import 'package:flutter/widgets.dart';
+import 'package:drchef/widgets/diet_plan.dart';
+import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -10,6 +11,28 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        body: CustomScrollView(
+      slivers: [
+        SliverAppBar.medium(
+          title: const Text("Dr Chef"),
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.menu_rounded),
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/form_page');
+              },
+              icon: const Icon(Icons.add_rounded),
+            )
+          ],
+        ),
+        const SliverToBoxAdapter(
+          child: DietPlan(),
+        )
+      ],
+    ));
   }
 }
