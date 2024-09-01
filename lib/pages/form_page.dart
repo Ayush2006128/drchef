@@ -1,6 +1,6 @@
 import 'package:drchef/widgets/add_image.dart';
 import 'package:drchef/widgets/form_image_container.dart';
-import 'package:drchef/widgets/image_widget.dart';
+import 'package:drchef/widgets/prompt_image_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -38,11 +38,16 @@ class _FormPageState extends State<FormPage> {
           child: FormImageContainer(
             addImage: AddImage(onTap: _pickImage),
             imageWidget: _images
-                .map((i) => ImageWidget(
-                    image: i,
-                    onRemove: () {
-                      _images.remove(i);
-                    }))
+                .map(
+                  (i) => PromptImage(
+                    file: i,
+                    onTapIcon: () {
+                      setState(() {
+                        _images.remove(i);
+                      });
+                    },
+                  ),
+                )
                 .toList(),
           ),
         ),
