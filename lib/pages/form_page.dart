@@ -12,7 +12,7 @@ class FormPage extends StatefulWidget {
 }
 
 class _FormPageState extends State<FormPage> {
-  List<XFile> _images = List.empty(growable: true);
+  late List<XFile?> _images = [];
   void _pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -40,7 +40,7 @@ class _FormPageState extends State<FormPage> {
             imageWidget: _images
                 .map(
                   (i) => PromptImage(
-                    file: i,
+                    file: i ?? XFile(''),
                     onTapIcon: () {
                       setState(() {
                         _images.remove(i);

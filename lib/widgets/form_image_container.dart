@@ -10,19 +10,31 @@ class FormImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 100,
-      child: Row(
+      height: 150,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(child: addImage),
-          Expanded(
-            child: SizedBox(
-              width: double.infinity,
-              height: 100,
-              child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => imageWidget[index],
-                  itemCount: imageWidget.length),
-            ),
+          const Expanded(
+            child: Text("Upload your prescription or medical reports."),
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: addImage,
+              ),
+              Expanded(
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 100,
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => imageWidget[index],
+                      itemCount: imageWidget.length),
+                ),
+              ),
+            ],
           ),
         ],
       ),
