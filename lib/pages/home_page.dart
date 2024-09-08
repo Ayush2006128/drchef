@@ -1,3 +1,4 @@
+import 'package:drchef/theme.dart';
 import 'package:drchef/widgets/diet_plan.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         body: CustomScrollView(
       slivers: [
-        SliverAppBar.medium(
-          title: const Text("Dr Chef"),
+        SliverAppBar.large(
+          backgroundColor: appBarColor,
+          title: const Center(child: Text("Welcome to Dr Chef!")),
           leading: IconButton(
             onPressed: () {},
             icon: const Icon(Icons.menu_rounded),
