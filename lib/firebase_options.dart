@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -51,7 +48,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBKADIsYPCLCbu4oHZ2hB1Qlz2Cukk94ls',
-    appId: '1:258868450517:android:23215fe78c6867ebd97e5c',
+    appId: '1:258868450517:android:b17405e060957606d97e5c',
     messagingSenderId: '258868450517',
     projectId: 'dr-chef-fa987',
     storageBucket: 'dr-chef-fa987.appspot.com',
@@ -66,4 +63,15 @@ class DefaultFirebaseOptions {
     storageBucket: 'dr-chef-fa987.appspot.com',
     measurementId: 'G-SRJEDSKB7K',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBKN2kIaDohvhxOI2jZDkFhJ082XG2VMXg',
+    appId: '1:258868450517:web:de62ee5bc34eba09d97e5c',
+    messagingSenderId: '258868450517',
+    projectId: 'dr-chef-fa987',
+    authDomain: 'dr-chef-fa987.firebaseapp.com',
+    storageBucket: 'dr-chef-fa987.appspot.com',
+    measurementId: 'G-SRJEDSKB7K',
+  );
+
 }

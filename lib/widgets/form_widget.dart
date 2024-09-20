@@ -58,7 +58,7 @@ class FormWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: submitForm,
               style: ElevatedButton.styleFrom(
                 backgroundColor: buttonColor,
                 minimumSize: const Size(50, 50),

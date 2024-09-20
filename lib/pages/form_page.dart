@@ -1,4 +1,3 @@
-import 'package:drchef/models/ai_model.dart';
 import 'package:drchef/models/form_model.dart';
 import 'package:drchef/theme.dart';
 import 'package:drchef/utils/constant.dart';
@@ -32,16 +31,14 @@ class _FormPageState extends State<FormPage> {
 
   final FormModel formModel = FormModel();
 
-  void submitForm() async {
+  void submitForm(BuildContext context) {
     formModel.nameSetter = nameController.text;
     formModel.diseaseSetter = diseaseController.text;
     formModel.ageSetter = ageController.text;
     formModel.alergiesSetter = alergiesController.text;
     formModel.imagesSetter = images;
 
-    final response = await generate(prompt, images);
-
-    print(response);
+    Navigator.pushNamed(context, '/diet_plan_page');
   }
 
   @override
@@ -85,7 +82,7 @@ class _FormPageState extends State<FormPage> {
               diseaseController: diseaseController,
               ageController: ageController,
               alergiesController: alergiesController,
-              submitForm: () => submitForm(),
+              submitForm: () => submitForm(context),
             ),
           ),
         ),

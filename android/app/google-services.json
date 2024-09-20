@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:258868450517:android:b17405e060957606d97e5c",
+        "android_client_info": {
+          "package_name": "mt.ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKADIsYPCLCbu4oHZ2hB1Qlz2Cukk94ls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:258868450517:android:23215fe78c6867ebd97e5c",
         "android_client_info": {
           "package_name": "mt.ai.drchef"
