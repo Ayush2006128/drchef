@@ -19,6 +19,7 @@ class _DietPlanPageState extends State<DietPlanPage> {
   String prompt = FormModel().getPrompt();
   ModelClass? modelClass; // Declare modelClass here
   ResponseModel? responseModel;
+  List? dishes;
 
   @override
   void initState() {
@@ -40,6 +41,7 @@ class _DietPlanPageState extends State<DietPlanPage> {
       final response = await modelClass!.generate();
       setState(() {
         responseModel = ResponseModel(text: response.text);
+        dishes = responseModel?.parseResponse()["dishes"];
       });
     } catch (e) {
       // Handle errors gracefully, e.g., display an error message
@@ -51,11 +53,24 @@ class _DietPlanPageState extends State<DietPlanPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          responseModel?.text ?? "Loading...",
-          style: const TextStyle(fontSize: 18),
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (responseModel != null && dishes != null)
+            Expanded(
+              child: ListView.builder(
+                itemCount: dishes!.length,
+                itemBuilder: (context, index) {
+                  final dish = dishes![index];
+                  return ListTile(
+                    title: Text(dish),
+                  );
+                },
+              ),
+            ),
+          if (responseModel == null) const CircularProgressIndicator(),
+        ],
+      )),
     );
   }
 }
