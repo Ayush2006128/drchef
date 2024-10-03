@@ -1,5 +1,4 @@
 import 'package:drchef/theme.dart';
-import 'package:drchef/widgets/diet_plan.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -32,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
         const SliverToBoxAdapter(
-          child: DietPlan(),
+          child: Text('hi'),
         )
       ],
     ));

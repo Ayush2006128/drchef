@@ -1,7 +1,9 @@
 import 'package:drchef/models/ai_model.dart';
 import 'package:drchef/models/form_model.dart';
 import 'package:drchef/models/response_model.dart';
+import 'package:drchef/theme.dart';
 import 'package:drchef/utils/constant.dart';
+import 'package:drchef/widgets/diet_plan_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
@@ -52,25 +54,36 @@ class _DietPlanPageState extends State<DietPlanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          if (responseModel != null && dishes != null)
-            Expanded(
-              child: ListView.builder(
-                itemCount: dishes!.length,
-                itemBuilder: (context, index) {
-                  final dish = dishes![index];
-                  return ListTile(
-                    title: Text(dish),
-                  );
-                },
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar.large(
+            backgroundColor: appBarColor,
+            title: const Center(child: Text("Create a diet plan")),
+            leading: IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(Icons.arrow_back),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              width: context.size!.width * 0.8,
+              height: context.size!.height * 0.9,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (responseModel != null && dishes != null)
+                    Expanded(
+                      child: DietPlanWidget(
+                        dishes: [for (var i in dishes!) Text(i)],
+                      ),
+                    ),
+                  if (responseModel == null) const CircularProgressIndicator(),
+                ],
               ),
             ),
-          if (responseModel == null) const CircularProgressIndicator(),
+          )
         ],
-      )),
+      ),
     );
   }
 }
