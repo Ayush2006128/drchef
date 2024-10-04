@@ -11,14 +11,17 @@ class DietPlanWidget extends StatelessWidget {
         border: Border.all(color: Colors.black),
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
-      width: context.size!.width * 0.8,
-      height: context.size!.height * 0.9,
       child: Expanded(
         child: ListView.builder(
           itemCount: dishes!.length,
           itemBuilder: (context, index) {
             final dish = dishes![index];
-            return dish;
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: ListTile(
+                title: dish,
+              ),
+            );
           },
         ),
       ),

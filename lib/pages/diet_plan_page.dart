@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drchef/models/ai_model.dart';
 import 'package:drchef/models/form_model.dart';
 import 'package:drchef/models/response_model.dart';
@@ -63,18 +64,32 @@ class _DietPlanPageState extends State<DietPlanPage> {
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back),
             ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  FirebaseFirestore.instance
+                      .collection('diet')
+                      .doc()
+                      .set({'diet': responseModel!.text});
+                },
+                icon: const Icon(Icons.save_rounded),
+              ),
+            ],
           ),
           SliverToBoxAdapter(
             child: SizedBox(
-              width: context.size!.width * 0.8,
-              height: context.size!.height * 0.9,
+              width: 800,
+              height: 500,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (responseModel != null && dishes != null)
                     Expanded(
-                      child: DietPlanWidget(
-                        dishes: [for (var i in dishes!) Text(i)],
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: DietPlanWidget(
+                          dishes: [for (var i in dishes!) Text(i)],
+                        ),
                       ),
                     ),
                   if (responseModel == null) const CircularProgressIndicator(),
