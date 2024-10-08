@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drchef/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,35 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  Future<void> _getRecipes() async {
+    try {
+      final DocumentSnapshot documentSnapshot = await FirebaseFirestore.instance
+          .collection('diet')
+          .doc('zuDu3xm3f10SWMxWxlGl')
+          .get();
+
+      if (documentSnapshot.exists) {
+        final Map<String, dynamic> data =
+            documentSnapshot.data() as Map<String, dynamic>;
+        final List<String> dishes = data['diet'] as List<String>;
+
+        for (var dish in dishes) {
+          print(dish);
+        }
+      } else {
+        print('Document does not exist');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getRecipes();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
