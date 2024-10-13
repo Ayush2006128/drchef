@@ -59,7 +59,7 @@ class _DietPlanPageState extends State<DietPlanPage> {
         slivers: [
           SliverAppBar.large(
             backgroundColor: appBarColor,
-            title: const Center(child: Text("Create a diet plan")),
+            title: const Center(child: Text("Here's your diet plan")),
             leading: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.arrow_back),
