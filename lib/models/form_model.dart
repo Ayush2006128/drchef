@@ -33,6 +33,7 @@ all the dishes should be very healthy
 and should be vegetarian or vegan 
 
 respond in JSON format like this 'dishes: List<String>'
+DO NOT SAY ANYTHING EXCEPT JSON RESPONSE
 """;
   }
 }

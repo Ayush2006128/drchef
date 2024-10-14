@@ -17,6 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List plan = [];
   Future<void> _getRecipes() async {
     final id = await getLatestId('diet');
+    debugPrint(id);
     try {
       final DocumentSnapshot documentSnapshot =
           await FirebaseFirestore.instance.collection('diet').doc(id).get();

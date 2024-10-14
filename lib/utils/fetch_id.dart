@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-Future<String> getLatestId(String collectionName) async {
+Future<String?> getLatestId(String collectionName) async {
   try {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
@@ -12,7 +12,7 @@ Future<String> getLatestId(String collectionName) async {
       DocumentSnapshot documentSnapshot = querySnapshot.docs.first;
       return documentSnapshot.id;
     } else {
-      return ''; // Return an empty string if no documents are found
+      return null; // Return an empty string if no documents are found
     }
   } catch (e) {
     print('Error getting latest ID: $e');
