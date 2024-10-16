@@ -4,7 +4,7 @@ Future<String?> getLatestId(String collectionName) async {
   try {
     QuerySnapshot querySnapshot = await FirebaseFirestore.instance
         .collection(collectionName)
-        .orderBy('id', descending: true)
+        .orderBy('diet', descending: false)
         .limit(1)
         .get();
 
