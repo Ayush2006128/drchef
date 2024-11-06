@@ -17,7 +17,6 @@ class _MyHomePageState extends State<MyHomePage> {
   List plan = [];
   Future<void> _getRecipes() async {
     final id = await getLatestId('diet');
-    debugPrint(id);
     try {
       final DocumentSnapshot documentSnapshot =
           await FirebaseFirestore.instance.collection('diet').doc(id).get();
@@ -29,10 +28,11 @@ class _MyHomePageState extends State<MyHomePage> {
         responseModel = ResponseModel(text: dishes);
         plan = responseModel.parseResponse()['dishes'];
       } else {
-        print('Document does not exist');
+        throw 'Document does not exist';
       }
     } catch (e) {
-      print('Error: $e');
+      // show error dialog
+      throw "somthing went wrong $e";
     }
   }
 
