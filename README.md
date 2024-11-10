@@ -14,3 +14,13 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## to run
+
+Get the gemini API key from [google AI studio](https://aistudio.google.com)
+in the assets diractory make a .env file and put your api key in it like this
+
+python```API_KEY='YOUR KEY'```
+
+and then run the app with this command
+bash```flutter run -d chrome```
